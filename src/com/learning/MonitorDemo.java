@@ -1,9 +1,9 @@
 package com.learning;
 
-public class Main {
+public class MonitorDemo {
 
     public static void main(String[] args) throws InterruptedException {
-        final BlockingQueue<Integer> queue = new BlockingQueue<>(5);
+        final BlockingQueueWMonitor<Integer> queue = new BlockingQueueWMonitor<>(5);
 
         Thread t1 = new Thread(() -> {
             try {

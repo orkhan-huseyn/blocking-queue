@@ -1,6 +1,6 @@
 package com.learning;
 
-public class BlockingQueue<T> {
+public class BlockingQueueWMonitor<T> {
 
     final Object lock = new Object();
 
@@ -11,7 +11,7 @@ public class BlockingQueue<T> {
     int tail = 0;
 
     @SuppressWarnings("unchecked")
-    public BlockingQueue(int capacity) {
+    public BlockingQueueWMonitor(int capacity) {
         this.capacity = capacity;
         array = (T[]) new Object[capacity];
     }
