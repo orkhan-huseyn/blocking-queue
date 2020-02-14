@@ -1,8 +1,11 @@
 package com.learning;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class BlockingQueueWMutex<T> {
 
-    final Object lock = new Object();
+    Lock lock = new ReentrantLock();
 
     T[] array;
     int size = 0;
@@ -23,6 +26,22 @@ public class BlockingQueueWMutex<T> {
     public T dequeue() throws InterruptedException {
         T item = null;
 
+        lock.lock();
+        while (size == 0) {
+            lock.unlock();
+            lock.lock();
+        }
+
+        if (head == capacity) {
+            head = 0;
+        }
+
+        item = array[head];
+        array[head] = null;
+        head++;
+        size--;
+
+        lock.unlock();
         return item;
     }
 }
