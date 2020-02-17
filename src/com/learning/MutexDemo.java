@@ -13,7 +13,8 @@ class MutexDemo {
                     System.out.println("Producer thread 1 enqueued " + i);
                     i++;
                 }
-            } catch (InterruptedException ignore) { }
+            } catch (InterruptedException ignore) {
+            }
         });
 
         Thread producer2 = new Thread(() -> {
@@ -24,7 +25,8 @@ class MutexDemo {
                     System.out.println("Producer thread 2 enqueued " + i);
                     i++;
                 }
-            } catch (InterruptedException ignore) { }
+            } catch (InterruptedException ignore) {
+            }
         });
 
         Thread producer3 = new Thread(() -> {
@@ -35,7 +37,8 @@ class MutexDemo {
                     System.out.println("Producer thread 3 enqueued " + i);
                     i++;
                 }
-            } catch (InterruptedException ignore) { }
+            } catch (InterruptedException ignore) {
+            }
         });
 
         Thread consumer1 = new Thread(() -> {
@@ -43,7 +46,8 @@ class MutexDemo {
                 while (true) {
                     System.out.println("Consumer thread 1 dequeued " + q.dequeue());
                 }
-            } catch (InterruptedException ignore) { }
+            } catch (InterruptedException ignore) {
+            }
         });
 
         Thread consumer2 = new Thread(() -> {
@@ -51,7 +55,8 @@ class MutexDemo {
                 while (true) {
                     System.out.println("Consumer thread 2 dequeued " + q.dequeue());
                 }
-            } catch (InterruptedException ignore) { }
+            } catch (InterruptedException ignore) {
+            }
         });
 
         Thread consumer3 = new Thread(() -> {
@@ -59,7 +64,8 @@ class MutexDemo {
                 while (true) {
                     System.out.println("Consumer thread 3 dequeued " + q.dequeue());
                 }
-            } catch (InterruptedException ignore) { }
+            } catch (InterruptedException ignore) {
+            }
         });
 
         producer1.setDaemon(true);
