@@ -11,7 +11,8 @@ public class MonitorDemo {
                     queue.enqueue(i);
                     System.out.println("Enqueued " + i);
                 }
-            } catch (InterruptedException ignored) {}
+            } catch (InterruptedException ignored) {
+            }
         });
 
         Thread t2 = new Thread(() -> {
@@ -19,7 +20,8 @@ public class MonitorDemo {
                 for (int i = 0; i < 25; i++) {
                     System.out.println("Thread 2 dequeued: " + queue.dequeue());
                 }
-            } catch (InterruptedException ignored) { }
+            } catch (InterruptedException ignored) {
+            }
         });
 
         Thread t3 = new Thread(() -> {
@@ -27,7 +29,8 @@ public class MonitorDemo {
                 for (int i = 0; i < 25; i++) {
                     System.out.println("Thread 3 dequeued: " + queue.dequeue());
                 }
-            } catch (InterruptedException ignored) { }
+            } catch (InterruptedException ignored) {
+            }
         });
 
         t1.start();
