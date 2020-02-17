@@ -20,7 +20,22 @@ public class BlockingQueueWMutex<T> {
     }
 
     public void enqueue(T item) throws InterruptedException {
+        lock.lock();
+        while (size == capacity) {
+            // release the mutex to give other threads
+            lock.unlock();
+            // reacquire the mutex before checking the condition
+            lock.lock();
+        }
 
+        if (tail == capacity) {
+            tail = 0;
+        }
+
+        array[tail] = item;
+        size++;
+        tail++;
+        lock.unlock();
     }
 
     public T dequeue() throws InterruptedException {
